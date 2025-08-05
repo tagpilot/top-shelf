@@ -1,0 +1,35 @@
+# Top Shelf
+# Copyright (C) 2024 tagconcierge
+# This file is distributed under the GPLv2 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: Top Shelf 1.0.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-07-31 12:00+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: top-shelf.php:63
+msgid "Top Shelf requires WooCommerce to be installed and active. %s"
+msgstr ""
+
+#: top-shelf.php:64
+msgid "Install WooCommerce"
+msgstr ""
+
+#: top-shelf.php:169
+msgid "Out of stock"
+msgstr ""
+
+#: top-shelf.php:172 top-shelf.php:174
+msgid "In stock"
+msgstr ""
+
+#: top-shelf.php:199
+msgid "Search..."
+msgstr ""

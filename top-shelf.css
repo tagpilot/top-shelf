@@ -1,0 +1,132 @@
+.top-shelf-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 9999;
+}
+
+.top-shelf-overlay.active {
+    display: block;
+}
+
+.top-shelf-container {
+    position: relative;
+    max-width: 800px;
+    margin: 100px auto 0;
+    padding: 20px;
+}
+
+.top-shelf-header {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.top-shelf-input {
+    width: 100%;
+    padding: 15px 50px 15px 20px;
+    font-size: 18px;
+    border: none;
+    border-radius: 4px;
+    background: white;
+}
+
+.top-shelf-close {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: #333;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.top-shelf-results {
+    display: none;
+    max-height: 60vh;
+    overflow-y: auto;
+    background: white;
+    border-radius: 4px;
+    padding: 20px;
+}
+
+.top-shelf-results.active {
+    display: block;
+}
+
+.search-result-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+    transition: background-color 0.2s;
+    text-decoration: none;
+    color: inherit;
+}
+
+.search-result-item:hover {
+    background-color: #f5f5f5;
+}
+
+.search-result-thumbnail {
+    width: 60px;
+    height: 60px;
+    margin-right: 15px;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.search-result-content {
+    flex-grow: 1;
+    min-width: 0; /* Prevents flex item from overflowing */
+}
+
+.search-result-title {
+    font-weight: bold;
+    margin-bottom: 5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.search-result-price-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.search-result-price {
+    color: #666;
+    font-size: 0.9em;
+}
+
+.search-result-stock {
+    padding: 4px 8px;
+    border-radius: 3px;
+    font-size: 12px;
+    font-weight: 500;
+    flex-shrink: 0;
+}
+
+.search-result-stock.in-stock {
+    background-color: #e8f5e9;
+    color: #2e7d32;
+}
+
+.search-result-stock.out-of-stock {
+    background-color: #ffebee;
+    color: #c62828;
+}
+
+.menu-item.search-icon svg {
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+}
