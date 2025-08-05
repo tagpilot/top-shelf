@@ -1,0 +1,38 @@
+services:
+    web:
+        image: wordpress:$WORDPRESS_VERSION
+        env_file: .env
+        restart: always
+        volumes:
+            - ./wordpress_data:/var/www/html/
+            - ./:/var/www/html/wp-content/plugins/top-shelf
+        ports:
+            - "80:80"
+        links:
+            - mysql
+    mysql:
+        image: mariadb:10.8.2
+        restart: always
+        env_file: .env
+        ports:
+            - "3306:3306"
+        volumes:
+            - mysql_data:/var/lib/mysql
+    wp-cli:
+      image: wordpress:cli
+      env_file: .env
+      working_dir: /var/www/html
+      entrypoint: bash
+      volumes:
+        - ./wordpress_data:/var/www/html
+    php-cli:
+      image: composer
+      env_file: .env
+      working_dir: /app
+      entrypoint: bash
+      environment:
+        SSH_AUTH_SOCK: ${SSH_AUTH_SOCK}
+      volumes:
+        - ./:/app
+volumes:
+    mysql_data: {}
