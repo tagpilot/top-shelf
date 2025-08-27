@@ -1,3 +1,3 @@
 #!/bin/bash
 
-zip top-shelf.zip languages/* top-shelf.css top-shelf.js top-shelf.php readme.txt
+zip top-shelf-search.zip languages/* top-shelf-search.css top-shelf-search.js top-shelf-search.php readme.txt

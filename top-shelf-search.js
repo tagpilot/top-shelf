@@ -2,12 +2,12 @@
     'use strict';
 
     // Cache DOM elements
-    const $searchIcon = $('.top-shelf-toggle');
-    const $searchOverlay = $('.top-shelf-overlay');
-    const $searchInput = $('.top-shelf-input');
-    const $searchClose = $('.top-shelf-close');
-    const $searchResults = $('.top-shelf-results');
-    const $searchContainer = $('.top-shelf-container');
+    const $searchIcon = $('.top-shelf-search-toggle');
+    const $searchOverlay = $('.top-shelf-search-overlay');
+    const $searchInput = $('.top-shelf-search-input');
+    const $searchClose = $('.top-shelf-search-close');
+    const $searchResults = $('.top-shelf-search-results');
+    const $searchContainer = $('.top-shelf-search-container');
 
     // Debounce function
     function debounce(func, wait) {
@@ -64,13 +64,13 @@
 
         // Make REST API request
         $.ajax({
-            url: topShelf.restUrl,
+            url: topShelfSearch.restUrl,
             method: 'GET',
             data: {
                 term: searchTerm
             },
             beforeSend: function(xhr) {
-                xhr.setRequestHeader('X-WP-Nonce', topShelf.nonce);
+                xhr.setRequestHeader('X-WP-Nonce', topShelfSearch.nonce);
             }
         })
         .done(function(response) {

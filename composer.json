@@ -1,5 +1,5 @@
 {
-    "name": "tagpilot/top-shelf",
+    "name": "tagpilot/top-shelf-search",
     "type": "wordpress-plugin",
     "require-dev": {
       "dealerdirect/phpcodesniffer-composer-installer": "^1",

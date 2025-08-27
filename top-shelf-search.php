@@ -1,14 +1,14 @@
 <?php
 /**
- * Plugin Name: Top Shelf
- * Plugin URI: https://wordpress.org/plugins/top-shelf/
+ * Plugin Name: Top Shelf Search
+ * Plugin URI: https://wordpress.org/plugins/top-shelf-search/
  * Description: Adds a quick search overlay with fuzzy search for WooCommerce products
  * Version: 1.0.1
- * Author: tagconcierge
- * Author URI: https://profiles.wordpress.org/tagconcierge/
+ * Author: mfrankiewicz
+ * Author URI: https://profiles.wordpress.org/mfrankiewicz/
  * License: GPLv2 or later
  * License URI: http://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain: top-shelf
+ * Text Domain: top-shelf-search
  * Domain Path: /languages
  * Requires at least: 5.6
  * Tested up to: 6.8
@@ -57,16 +57,16 @@ class TopShelfSearch {
 		echo '<div class="notice notice-error"><p>';
 		printf(
 			/* translators: %s: WooCommerce plugin link */
-			esc_html__('Top Shelf requires WooCommerce to be installed and active. %s', 'top-shelf'),
-			'<a href="' . esc_url(admin_url('plugin-install.php?s=woocommerce&tab=search&type=term')) . '">' . esc_html__('Install WooCommerce', 'top-shelf') . '</a>'
+			esc_html__('Top Shelf requires WooCommerce to be installed and active. %s', 'top-shelf-search'),
+			'<a href="' . esc_url(admin_url('plugin-install.php?s=woocommerce&tab=search&type=term')) . '">' . esc_html__('Install WooCommerce', 'top-shelf-search') . '</a>'
 		);
 		echo '</p></div>';
 	}
 
 	public function enqueue_scripts() {
 		wp_enqueue_style(
-			'top-shelf',
-			plugins_url('top-shelf.css', __FILE__),
+			'top-shelf-search',
+			plugins_url('top-shelf-search.css', __FILE__),
 			array(),
 			'1.0.4'
 		);
@@ -80,15 +80,15 @@ class TopShelfSearch {
 		);
 
 		wp_enqueue_script(
-			'top-shelf',
-			plugins_url('top-shelf.js', __FILE__),
+			'top-shelf-search',
+			plugins_url('top-shelf-search.js', __FILE__),
 			array('jquery', 'fuse-js'),
 			'1.0.4',
 			true
 		);
 
-		wp_localize_script('top-shelf', 'topShelf', array(
-			'restUrl' => rest_url('top-shelf/v1/search'),
+		wp_localize_script('top-shelf-search', 'topShelfSearch', array(
+			'restUrl' => rest_url('top-shelf-search/v1/search'),
 			'nonce' => wp_create_nonce('wp_rest')
 		));
 	}
@@ -97,7 +97,7 @@ class TopShelfSearch {
 		// Add only to primary menu
 		if ('primary' === $args->theme_location) {
 			$search_icon = '<li class="menu-item search-icon">
-                <a href="#" class="top-shelf-toggle">
+                <a href="#" class="top-shelf-search-toggle">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <circle cx="11" cy="11" r="8"></circle>
                         <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
@@ -110,7 +110,7 @@ class TopShelfSearch {
 	}
 
 	public function register_search_endpoint() {
-		register_rest_route('top-shelf/v1', '/search', array(
+		register_rest_route('top-shelf-search/v1', '/search', array(
 			'methods' => 'GET',
 			'callback' => array($this, 'handle_search_request'),
 			'permission_callback' => '__return_true',
@@ -170,13 +170,13 @@ continue;
 				$is_in_stock = $product->is_in_stock();
 
 				// Get detailed stock information
-				$stock_text = __('Out of stock', 'top-shelf');
+				$stock_text = __('Out of stock', 'top-shelf-search');
 				if ($is_in_stock) {
 					if ($product->managing_stock()) {
 						$stock_qty = $product->get_stock_quantity();
-						$stock_text = $stock_qty > 0 ? __('In stock', 'top-shelf') : __('Out of stock', 'top-shelf');
+						$stock_text = $stock_qty > 0 ? __('In stock', 'top-shelf-search') : __('Out of stock', 'top-shelf-search');
 					} else {
-						$stock_text = __('In stock', 'top-shelf');
+						$stock_text = __('In stock', 'top-shelf-search');
 					}
 				}
 
@@ -198,13 +198,13 @@ continue;
 
 	public function add_search_overlay() {
 		?>
-		<div class="top-shelf-overlay">
-			<div class="top-shelf-container">
-				<div class="top-shelf-header">
-					<input type="text" class="top-shelf-input" placeholder="<?php esc_attr_e('Search...', 'top-shelf'); ?>">
-					<button class="top-shelf-close">×</button>
+		<div class="top-shelf-search-overlay">
+			<div class="top-shelf-search-container">
+				<div class="top-shelf-search-header">
+					<input type="text" class="top-shelf-search-input" placeholder="<?php esc_attr_e('Search...', 'top-shelf-search'); ?>">
+					<button class="top-shelf-search-close">×</button>
 				</div>
-				<div class="top-shelf-results"></div>
+				<div class="top-shelf-search-results"></div>
 			</div>
 		</div>
 		<?php

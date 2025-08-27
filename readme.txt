@@ -1,4 +1,4 @@
-=== Top Shelf ===
+=== Top Shelf Search ===
 Contributors: tagconcierge
 Tags: woocommerce, search, overlay, products, fuzzy search
 Requires at least: 5.1.0
