@@ -1,4 +1,4 @@
-.top-shelf-overlay {
+.top-shelf-search-overlay {
     display: none;
     position: fixed;
     top: 0;
@@ -9,23 +9,23 @@
     z-index: 9999;
 }
 
-.top-shelf-overlay.active {
+.top-shelf-search-overlay.active {
     display: block;
 }
 
-.top-shelf-container {
+.top-shelf-search-container {
     position: relative;
     max-width: 800px;
     margin: 100px auto 0;
     padding: 20px;
 }
 
-.top-shelf-header {
+.top-shelf-search-header {
     position: relative;
     margin-bottom: 20px;
 }
 
-.top-shelf-input {
+.top-shelf-search-input {
     width: 100%;
     padding: 15px 50px 15px 20px;
     font-size: 18px;
@@ -34,7 +34,7 @@
     background: white;
 }
 
-.top-shelf-close {
+.top-shelf-search-close {
     position: absolute;
     right: 10px;
     top: 50%;
@@ -47,7 +47,7 @@
     padding: 5px;
 }
 
-.top-shelf-results {
+.top-shelf-search-results {
     display: none;
     max-height: 60vh;
     overflow-y: auto;
@@ -56,7 +56,7 @@
     padding: 20px;
 }
 
-.top-shelf-results.active {
+.top-shelf-search-results.active {
     display: block;
 }
 
